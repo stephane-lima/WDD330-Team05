@@ -24,7 +24,7 @@ export function checkLogin() {
         const location = window.location;
         console.log(location);
 
-        window.location = `/login/index.html?redirect=${location.pathname}`
+        window.location = `/login/index.html?redirect=${location.pathname}`;
     } else return token;
 }
 
@@ -34,8 +34,8 @@ function isTokenValid() {
         
         let currentDate = new Date();
 
-        if (decoded.exp * 1000< currentDate.getTime()) {
-            console.group("Token expired");
+        if (decoded.exp * 1000 < currentDate.getTime()) {
+            console.log("Token expired");
             return false;
         } else {
             console.log("Valid Token");

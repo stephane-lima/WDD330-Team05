@@ -4,12 +4,18 @@ import { findProductById } from "./externalServices.mjs";
 let product = {};
 
 export default async function productDetails(productId) {
+    try {
         // use findProductById to get the details for the current product. findProductById will return a promise! use await or .then() to process it
         product = await findProductById(productId);
         // once we have the product details we can render out the HTML
         renderProductDetails();
         // add a listener to Add to Cart button
         document.getElementById("addToCart").addEventListener("click", addToCart);
+    } catch (error) {
+        // display a friendly error message to the user
+        document.querySelector("#productName").innerText = "An error occured while retrieving the product details. Please try again later.";
+    }
+        
 }
 
 function addToCart() {

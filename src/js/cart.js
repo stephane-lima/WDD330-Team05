@@ -1,6 +1,5 @@
 import { loadHeaderFooter } from "./utils.mjs";
 import { ShoppingCart, removeItem } from "./shoppingCart.mjs";
-import { getLocalStorage } from "./utils.mjs";
 
 
 
@@ -13,19 +12,18 @@ ShoppingCart();
 // console.log(cartLength.length);
 
 // var cartItems = document.querySelectorAll(".cart-card span[data-id]");
-while (cartLength.length > 0) {
-    var cartItems = document.querySelectorAll(".cart-card span[data-id]");
-    cartItems.forEach(function (span) {
-        span.addEventListener("click", function () {
-            var itemId = this.getAttribute("data-id");
-            removeItem(itemId);
-            // location.reload();
-            loadHeaderFooter();
-            ShoppingCart();
 
-        });
+var cartItems = document.querySelectorAll(".cart-card span[data-id]");
+cartItems.forEach(function (span) {
+    span.addEventListener("click", function () {
+        var itemId = this.getAttribute("data-id");
+        removeItem(itemId);
+        // location.reload();
+        loadHeaderFooter();
+        ShoppingCart();
     });
-}
+});
+
 
 // var cartItems = document.querySelectorAll(".cart-card span[data-id]");
 // cartItems.forEach(function (span) {
